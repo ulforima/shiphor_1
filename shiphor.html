@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAL PHILOLOGY DIVISION - Classified Message System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+            color: #e6f1ff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 1px solid #64ffda;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: #64ffda;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+        
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+            color: #8892b0;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .logo-container {
+            margin: 20px 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, #112240 0%, #233554 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+            border: 2px solid #64ffda;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .logo-placeholder {
+            font-size: 1rem;
+            color: #64ffda;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .logo-text {
+            text-align: center;
+            color: #64ffda;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        .input-section {
+            background: rgba(17, 34, 64, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #1e2a3a;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            color: #64ffda;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            background: #0a192f;
+            border: 1px solid #1e2a3a;
+            border-radius: 5px;
+            color: #e6f1ff;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            transition: border 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #64ffda;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: #64ffda;
+            color: #0a192f;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #52e0c4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.4);
+        }
+        
+        .result-section {
+            background: rgba(17, 34, 64, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #1e2a3a;
+        }
+        
+        .result-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #64ffda;
+            text-align: center;
+        }
+        
+        .result-text {
+            background: #0a192f;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 100px;
+            border: 1px solid #1e2a3a;
+            color: #e6f1ff;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .warning {
+            margin-top: 30px;
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 1rem;
+            max-width: 600px;
+            line-height: 1.6;
+            border: 1px solid #ff6b6b;
+            padding: 15px;
+            border-radius: 5px;
+            background: rgba(255, 107, 107, 0.1);
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .input-section, .result-section {
+                padding: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DIGITAL PHILOLOGY DIVISION</h1>
+        <h2>CLASSIFIED MESSAGE SYSTEM</h2>
+    </div>
+    
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="inputText">Enter classified message:</label>
+                <textarea id="inputText" placeholder="Enter confidential text here..."></textarea>
+            </div>
+            <div class="buttons">
+                <button id="encryptBtn">Encode Message</button>
+                <button id="decryptBtn">Decode Message</button>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-title">Secure output:</div>
+            <div class="result-text" id="outputText">Result will appear here...</div>
+        </div>
+        
+        <div class="warning">
+            <p>WARNING: This system is for authorized personnel only. All messages are STRICTLY CONFIDENTIAL. Unauthorized access is prohibited and subject to prosecution.</p>
+        </div>
+    </div>
+
+    <script>
+        function processMessage(text) {
+            let result = "";
+            for (let char of text) {
+                if (char.match(/[a-z]/i)) {
+                    if (char === char.toUpperCase()) {
+                        result += String.fromCharCode(65 + (25 - (char.charCodeAt(0) - 65)));
+                    } else {
+                        result += String.fromCharCode(97 + (25 - (char.charCodeAt(0) - 97)));
+                    }
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        document.getElementById('encryptBtn').addEventListener('click', function() {
+            const inputText = document.getElementById('inputText').value;
+            const processed = processMessage(inputText);
+            document.getElementById('outputText').textContent = processed;
+        });
+
+        document.getElementById('decryptBtn').addEventListener('click', function() {
+            const inputText = document.getElementById('inputText').value;
+            const processed = processMessage(inputText);
+            document.getElementById('outputText').textContent = processed;
+        });
+    </script>
+</body>
+</html>
